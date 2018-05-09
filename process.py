@@ -11,11 +11,15 @@ join = os.path.join
 DIR = os.path.abspath('.')
 DIR_ITEMS = join(DIR, 'items')
 
+def tpl_newlines(text):
+    return text.replace('\n', '<br/>')
+
 tmpl = jinja2.Environment(
     loader=jinja2.FileSystemLoader('./templates'),
     undefined=jinja2.StrictUndefined,
 )
 
+tmpl.globals.update({'newlines': tpl_newlines})
 
 def find_image(base):
     extensions = ['png', 'jpg', 'jpeg']
