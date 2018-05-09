@@ -85,6 +85,9 @@ small {
 p.st {
  margin-top:-1em
 }
+div.fancyPositioning {
+    padding-bottom: 25px;
+}
 div.fancyPositioning div.picture-left {
  float:left;
  width:40%;
