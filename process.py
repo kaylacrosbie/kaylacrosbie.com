@@ -43,7 +43,7 @@ def generate_index():
         fn_yaml = fn
         fn_img = find_image(name)
 
-        item = {'imgurl': join('items', os.path.basename(fn_img))}
+        item = {'imgurl': join('/items', os.path.basename(fn_img))}
         item.update(yaml.load(open(fn_yaml)))
 
         template = tmpl.get_template('./image.html')
@@ -54,7 +54,7 @@ def generate_index():
         with open(fn_html, 'w') as f:
             f.write(html)
 
-        item.update({'link': join('items', os.path.basename(fn_html))})
+        item.update({'link': join('/items', os.path.basename(fn_html))})
         items.append(item)
 
     template = tmpl.get_template('./index.html')
