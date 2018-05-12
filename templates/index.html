@@ -9,26 +9,46 @@
 
 <body>
 
-<h1>Kayla Crosbie : Illustrator</h1>
-<br/>
-<!--<p>A short description of the work etc</p>-->
-
-{% for item in items %}
-<div class="fancyPositioning">
-    <div class="picture-left">
-        <a href="{{ item.link }}">
-            <img src="{{ item.imgurl }}" title="{{ item.title }}">
-        </a>
-        <!--<p class="caption">Caption</p>-->
+<div class='wrapper'>
+    <div class='nav'>
+    <div class='nav-wrapper'>
+        <center>
+            <h1>Kayla Crosbie</h1>
+             <video autoplay loop muted width='160' height='160' id='video'>
+                <source src="/static/selfie-animation.mp4" type="video/mp4">
+            </video> 
+            <h2>Illustrator</h2>
+            <div class='footer'>
+            </div>
+        </center>
+        <br/>
+        <!--<p>A short description of the work etc</p>-->
     </div>
-    <h2>{{ item.title }}</h2>
-    <div class="tleft">{{ newlines(item.description) }}</div>
-</div>
-{% endfor %}
+    </div>
+
+    <div class='section'>
+    {% for item in items %}
+    <div class="fancyPositioning">
+        <div class="picture-left">
+            <a href="{{ item.link }}">
+                <img src="{{ item.imgurl }}" title="{{ item.title }}">
+            </a>
+            <!--<p class="caption">Caption</p>-->
+        </div>
+        <h2>{{ item.title }}</h2>
+        <div class="tleft">{{ newlines(item.description) }}</div>
+    </div>
+    {% endfor %}
+    </div>
 
 <!--<blockquote>
     <span>Good design is as little design as possible.</span>
-    <author>Some German motherfucker on motherfuckingwebsite.com</author>
+    <author>Some author</author>
 </blockquote>-->
 
+</div>
+<script type='text/javascript'>
+var e = document.getElementById('video');
+if (e.paused) e.play();
+</script>
 </body></html>
