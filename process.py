@@ -10,6 +10,12 @@ join = os.path.join
 
 DIR = os.path.abspath('.')
 DIR_ITEMS = join(DIR, 'items')
+DIR_GEN = join(DIR, 'items-generated')
+THUMBNAIL_WIDTH = 500
+THUMBNAIL_EXTENSION = '.jpg'
+
+def url(filepath):
+    return join('/', filepath.replace(DIR, ''))
 
 def tpl_newlines(text):
     return text.replace('\n', '<br/>')
@@ -20,6 +26,35 @@ tmpl = jinja2.Environment(
 )
 
 tmpl.globals.update({'newlines': tpl_newlines})
+
+class PageGenerator:
+    def __init__(self, DIR_ITEMS, DIR_GEN):
+        pass
+
+def path_gen(filename):
+    name = os.path.basename(filename)
+    return join(DIR_GEN, name)
+
+def image_size(filename):
+    im = Image.open(filename)
+    return im.size
+
+def create_thumbnail(filename):
+    name, ext = os.path.splitext(filename)
+    outfile = '{}-thumb{}'.format(name, THUMBNAIL_EXTENSION)
+    outfile = path_gen(outfile)
+
+    im = Image.open(filename)
+    if im.size[0] > THUMBNAIL_WIDTH:
+        width = THUMBNAIL_WIDTH
+        height = int(im.size[1] / im.size[0] * width)
+        im = im.resize((width, height), resample=Image.LANCZOS)
+    im = im.convert('RGB')
+
+    with open(outfile, 'wb') as fn:
+        im.save(fn)
+
+    return outfile
 
 def find_image(base):
     extensions = ['png', 'jpg', 'jpeg']

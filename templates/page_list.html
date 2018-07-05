@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class='section'>
+    {% for item in items %}
+    <div class="fancyPositioning">
+        <div class="picture-left">
+            <a href="{{ item.link }}">
+                <img src="{{ item.thumb }}" title="{{ item.title }}">
+            </a>
+            <!--<p class="caption">Caption</p>-->
+        </div>
+        <h2>{{ item.title }}</h2>
+        <div class="tleft">{{ newlines(item.description) }}</div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+

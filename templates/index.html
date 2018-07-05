@@ -9,23 +9,28 @@
 
 <body>
 
-<h1>Kayla Crosbie : Illustrator</h1>
-<br/>
-<!--<p>A short description of the work etc</p>-->
-
-{% for item in items %}
-<div class="fancyPositioning">
-    <div class="picture-left">
-        <a href="{{ item.link }}">
-            <img src="{{ item.imgurl }}" title="{{ item.title }}">
-        </a>
-        <!--<p class="caption">Caption</p>-->
+<div class='wrapper'>
+    <div class='nav'>
+        <div class='nav-header'>
+            <h1>Kayla Crosbie</h1>
+             <video autoplay loop muted width='160' height='160' id='video'>
+                <source src="/static/selfie-animation.mp4" type="video/mp4">
+            </video> 
+            <h2>Illustrator</h2>
+            <a href='/pages/art'>Art</a>
+            <a href='/pages/comics'>Comics</a>
+            <a href='/pages/minibooks'>Mini books</a>
+            <a href='/pages/cards'>Cards</a>
+            <a href='/pages/installations'>Installations</a>
+            <a href='/pages/contact'>Contact</a>
+        </div>
+        <div class='footer'>
+            <p>&#169; 2018</p>
+        </div>
     </div>
-    <h2>{{ item.title }}</h2>
-    <div class="tleft">{{ newlines(item.description) }}</div>
-</div>
-{% endfor %}
 
+    {% block content %}
+    {% endblock %}
 <!--<blockquote>
     <span>Good design is as little design as possible.</span>
     <author>Some German motherfucker on motherfuckingwebsite.com</author>
